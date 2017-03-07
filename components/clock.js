@@ -43,7 +43,7 @@ export default class Clock extends Component {
 		}, 1000);
 
 		return (
-		<View style={{flex: 0, marginTop: 100, flexDirection: 'row', justifyContent: 'center',
+		<View style={{flex: 0, marginTop: 110, flexDirection: 'row', justifyContent: 'center',
         alignItems: 'center'}}>
 			<View style={styles.container}>
 				<StatusBar style={{backgroundColor: 'transparent'}} />

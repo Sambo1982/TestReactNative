@@ -5,6 +5,7 @@ import {
 	StyleSheet,
 	StatusBar,
 	TouchableHighlight,
+	Button,
 	Modal
 } from "react-native";
 import ExpiresClock from './expiresClock';
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
 		flex: -1,
 		flexDirection: 'row',
 		padding: 2,
-		marginTop: -5,
+		marginTop: -15,
 	},
 	backText: {
 		fontSize: 17,
@@ -52,12 +53,14 @@ export default class BottomBar extends Component {
 		         <View style={{marginTop: 22}}>
 		          <View>
 		            <ColorPicker />
-
-		            <TouchableHighlight onPress={() => {
-		              this.setModalVisible(!this.state.modalVisible)
-		            }}>
-		              <Text>Hide Modal</Text>
-		            </TouchableHighlight>
+								<Button
+                  onPress={() => {
+                  		this.setModalVisible(!this.state.modalVisible)
+                  	}
+                	}
+                  title="Close"
+                  color="#841584"
+                />
 
 		          </View>
 		         </View>

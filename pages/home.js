@@ -5,11 +5,13 @@ import {
   StyleSheet,
   Image
 } from 'react-native';
+// import PullToRefresh from '../components/pullRefresh';
 import TicketTop from '../components/ticketTop';
 import TicketMiddle from '../components/ticketMiddle';
 import Clock from '../components/clock';
 import FlashingBar from '../components/flashingBar';
 import BottomBar from '../components/bottomBar';
+import FlashBox from '../components/flashBox';
 
 var styles = StyleSheet.create({
 });
@@ -30,6 +32,7 @@ export default class Home extends Component {
         <Clock />
         <FlashingBar />
         <BottomBar />
+        <FlashBox />
       </View>
     );
   }

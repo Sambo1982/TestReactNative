@@ -44,6 +44,15 @@ var COLORS = {
   },
   yellow: {
     hex: '#ede02a'
+  },
+  dark_aqua: {
+    hex: '#6896a8'
+  },
+  dark_tan: {
+    hex: '#91895f'
+  },
+  dark_purple: {
+    hex: '#6339a8'
   }
 };
 

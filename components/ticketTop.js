@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ColorPicker from './colorPicker';
+import FlashingBar from './flashingBar';
 
 var styles = StyleSheet.create({
   destinationView: {
@@ -63,7 +64,7 @@ export default class TicketTop extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._loadInitialTopColor().done();
   }
 
