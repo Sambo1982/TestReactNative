@@ -17,21 +17,55 @@ const styles = StyleSheet.create({
 	colorBar: {
 		height: 25,
 		flex: 1,
-	},
-	middle: {
-		backgroundColor: 'blue',
-	},
-	right: {
-		backgroundColor: 'black',
-	},
-	blank: {
-		backgroundColor: 'white',
 	}
 });
 
 var LEFT_COLOR = '@Colors:left_color';
 var MIDDLE_COLOR = '@Colors:middle_color';
 var RIGHT_COLOR = '@Colors:right_color';
+
+
+export class ColorBar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      backgroundColor: 'orange',
+    };
+  }
+
+  componentWillMount() {
+    this._loadInitialBarColor().done();
+  }
+
+  componentWillUpdate() {
+    this._loadInitialBarColor().done();
+  }
+
+  _loadInitialBarColor = async () => {
+    if(this.props.barPostition == 'left') {
+      bar = LEFT_COLOR;
+      value = await AsyncStorage.getItem(bar);
+      this.setState({backgroundColor: value})
+    } else if(this.props.barPostition == 'middle') {
+      bar = MIDDLE_COLOR;
+      value = await AsyncStorage.getItem(bar);
+      this.setState({backgroundColor: value})
+    } else {
+      bar = RIGHT_COLOR;
+      value = await AsyncStorage.getItem(bar);
+      this.setState({backgroundColor: value})
+    }
+  }
+
+  render() {
+    return (
+      <View style={[styles.colorBar, {backgroundColor: this.state.backgroundColor}]} />
+    )
+  }
+
+}
+
 
 export default class FlashingBar extends Component {
 	constructor(props) {
@@ -43,67 +77,14 @@ export default class FlashingBar extends Component {
     };
   }
 
-  componentDidMount() {
-    this._loadInitialBarColors().done();
-  }
-
-  reload() {
-  	console.warn('blah')
-  }
-
-  _loadInitialBarColors = async () => {
-  	this._loadLeftBarColor().done();
-  	this._loadMiddleBarColor().done();
-  	this._loadRightBarColor().done();
-  }
-
-  _loadLeftBarColor = async () => {
-    try {
-      var value = await AsyncStorage.getItem(LEFT_COLOR);
-      if (value !== null){
-        this.setState({leftColor: value});
-      } else {
-        this.setState({leftColor: 'orange'});
-      }
-    } catch (error) {
-      console.warn("Error on setting leftColor");
-    }
-  }
-
-  _loadMiddleBarColor = async () => {
-    try {
-      var value = await AsyncStorage.getItem(MIDDLE_COLOR);
-      if (value !== null){
-        this.setState({middleColor: value});
-      } else {
-        this.setState({leftColor: 'orange'});
-      }
-    } catch (error) {
-      console.warn("Error on setting middleColor");
-    }
-  }
-
-   _loadRightBarColor = async () => {
-    try {
-      var value = await AsyncStorage.getItem(RIGHT_COLOR);
-      if (value !== null){
-        this.setState({rightColor: value});
-      } else {
-        this.setState({leftColor: 'orange'});
-      }
-    } catch (error) {
-      console.warn("Error on setting rightColor");
-    }
-  }
-
 	render() {
 		return (
 			<View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',
         alignItems: 'center'}}>
 				<View style={styles.container}>
-					<View style={[styles.colorBar, {backgroundColor: this.state.leftColor}]} />
-					<View style={[styles.colorBar, {backgroundColor: this.state.middleColor}]} />
-					<View style={[styles.colorBar, {backgroundColor: this.state.rightColor}]} />
+					<ColorBar barPostition='left'  />
+					<ColorBar barPostition='middle' />
+					<ColorBar barPostition='right' />
 				</View>
 			</View>
 		)

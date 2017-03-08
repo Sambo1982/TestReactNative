@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 
 import Home from './pages/home'
@@ -15,6 +16,7 @@ export default class TestNativeReact extends Component {
     return (
 
       <View>
+        <StatusBar hidden={true} />
         <Home />
       </View>
 
