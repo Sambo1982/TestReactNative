@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
 		alignItems: 'stretch',
 		padding: 2,
 		marginTop: 5,
+    marginLeft: 1
 	},
 	colorBar: {
 		height: 25,
 		flex: 1,
+    marginLeft: -1
 	}
 });
 

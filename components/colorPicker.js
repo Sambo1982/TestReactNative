@@ -6,6 +6,7 @@ import {
   Picker,
   StyleSheet,
   AsyncStorage,
+  TouchableHighlight,
   ScrollView
 } from "react-native";
 
@@ -18,6 +19,19 @@ var styles = StyleSheet.create({
     marginBottom: 40,
     width: 150,
     height: 20,
+  },
+  colorBox: {
+    flex: 1,
+    marginBottom: 5,
+    alignItems: 'stretch'
+  },
+  colorButton: {
+
+  },
+  colorText: {
+    fontSize: 14,
+    padding: 10,
+    textAlign: 'center'
   }
 });
 
@@ -45,14 +59,38 @@ var COLORS = {
   purple_6: {
     hex: '#e1c3e2'
   },
+  violet_1: {
+    hex: '#7f39d7'
+  },
+  dark_aqua: {
+    hex: '#5a7894'
+  },
   blue_1: {
-    hex: '#223ff9'
+    hex: '#0066ff'
   },
   blue_2: {
-    hex: '#223ff9'
+    hex: '#6c80fb'
   },
   blue_3: {
-    hex: '#6c80fb'
+    hex: '#9999cc'
+  },
+  blue_4: {
+    hex: '#99ccff'
+  },
+  dark_aqua: {
+    hex: '#6896a8'
+  },
+  red_1: {
+    hex: '#330000'
+  },
+  red: {
+    hex: 'red'
+  },
+  copper_rose: {
+    hex: '#996666'
+  },
+  light_orange: {
+    hex: '#ffcc99'
   },
   pink_1: {
     hex: '#ff55a3'
@@ -60,43 +98,47 @@ var COLORS = {
   pink_2: {
     hex: '#f9c0ca'
   },
-  orange_buff: {
-    hex: '#eeca6b'
-  },
-  red: {
-    hex: 'red'
-  },
-  grey: {
-    hex: '#b7b3b4'
-  },
-  green: {
-    hex: '#279327'
+  pink_3: {
+    hex: '#fbb1e5'
   },
   yellow: {
     hex: '#ede02a'
   },
-  dark_aqua: {
-    hex: '#6896a8'
-  },
   dark_tan: {
     hex: '#91895f'
-  }
+  },
+  orange_buff: {
+    hex: '#eeca6b'
+  },
+  grey: {
+    hex: '#b7b3b4'
+  },
+  green_1: {
+    hex: '#339933'
+  },
+  green_2: {
+    hex: '#33cc99'
+  },
+  green_3: {
+    hex: '#99cc99'
+  },
+  green_4: {
+    hex: '#8de48e'
+  },
 };
 
 export class PickList extends Component {
-  state = {
-  };
+  state = { };
 
-  _onValueChange = async (selectedValue) => {
-    this.setState({selectedValue});
+  _onPressed = async (hexCode) => {
+    this.setState({hexCode});
     try {
-      await AsyncStorage.setItem(this.props.dbField, selectedValue);
+      await AsyncStorage.setItem(this.props.dbField, hexCode);
     } catch (error) {
     }
   };
 
   render() {
-    var color = this.state.selectedValue;
     return (
       <View>
         <Text
@@ -107,20 +149,16 @@ export class PickList extends Component {
         >
           {this.props.title}
         </Text>
-        <View style={{padding: 20, marginBottom: 22, backgroundColor: this.state.selectedValue}}>
-          <Picker
-            style={{backgroundColor: 'white'}}
-            selectedValue={color}
-            onValueChange={this._onValueChange}>
-            {Object.keys(COLORS).map((color) => (
-              <Item
-                key={color}
-                value={COLORS[color].hex}
-                label={color}
-                labelStyle={{backgroundColor: 'red'}}
-              />
-            ))}
-          </Picker>
+        <View style={{padding: 20, marginBottom: 22, backgroundColor: this.state.hexCode}}>
+          {Object.keys(COLORS).map((color) => (
+            <View style={[styles.colorBox]} key={color}>
+              <TouchableHighlight underlayColor={COLORS[color].hex} style={[styles.colorButton], {backgroundColor: COLORS[color].hex}} onPress={() => { this._onPressed(COLORS[color].hex) }}>
+                <Text style={[styles.colorText]}>
+                  {COLORS[color].hex}
+                </Text>
+              </TouchableHighlight>
+            </View>
+          ))}
         </View>
       </View>
     );

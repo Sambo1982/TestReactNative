@@ -29,12 +29,12 @@ var styles = StyleSheet.create({
   ticketTypeText: {
     marginTop: 7,
     fontSize: 22,
-    fontWeight: '700'
+    fontWeight: '800'
   },
   ticketAmountText: {
     marginTop: 10,
     fontSize: 27,
-    fontWeight: '700'
+    fontWeight: '800'
   },
   qrImageSmall: {
     width: 170,

@@ -35,7 +35,7 @@ var styles = StyleSheet.create({
     fontSize: 42,
     letterSpacing: 2,
     backgroundColor: 'transparent',
-    fontWeight: '600'
+    fontWeight: '800'
   },
   smallText: {
     position: 'absolute',
@@ -44,7 +44,7 @@ var styles = StyleSheet.create({
     padding: 0,
     fontSize: 16,
     backgroundColor: 'transparent',
-    fontWeight: '500'
+    fontWeight: '700'
   }
 });
 
@@ -60,7 +60,7 @@ export default class TicketTop extends Component {
       to: 'NYP NYP',
       transferStation: 'NWK',
       transferLine: 'SEC',
-      modalVisible: true
+      modalVisible: false
     };
   }
 
