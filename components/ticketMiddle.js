@@ -27,14 +27,16 @@ var styles = StyleSheet.create({
     flex: 1
   },
   ticketTypeText: {
+    fontFamily: 'Helvetica',
     marginTop: 7,
     fontSize: 22,
-    fontWeight: '800'
+    fontWeight: '700'
   },
   ticketAmountText: {
+    fontFamily: 'Helvetica',
     marginTop: 10,
     fontSize: 27,
-    fontWeight: '800'
+    fontWeight: '700'
   },
   qrImageSmall: {
     width: 170,

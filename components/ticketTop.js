@@ -30,14 +30,16 @@ var styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   largeText: {
+    fontFamily: 'Helvetica',
     textAlign: 'center',
     padding: 0,
     fontSize: 42,
     letterSpacing: 2,
     backgroundColor: 'transparent',
-    fontWeight: '800'
+    fontWeight: '700'
   },
   smallText: {
+    fontFamily: 'Helvetica',
     position: 'absolute',
     top: 45,
     left: 20,
