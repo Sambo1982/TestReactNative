@@ -18,7 +18,7 @@ var styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     margin: 10,
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 0,
     flex: 1,
     height: 173
@@ -60,7 +60,7 @@ export default class TicketTop extends Component {
       to: 'NYP NYP',
       transferStation: 'NWK',
       transferLine: 'SEC',
-      modalVisible: false
+      modalVisible: true
     };
   }
 

@@ -3,10 +3,13 @@ import {
   View,
   Text,
   PickerIOS,
+  Picker,
   StyleSheet,
   AsyncStorage,
   ScrollView
 } from "react-native";
+
+const Item = Picker.Item;
 
 var styles = StyleSheet.create({
   color: {
@@ -24,14 +27,41 @@ var COLORS = {
   select: {
     hex: 'white'
   },
-  purple: {
-    hex: '#ba73bc'
+  purple_1: {
+    hex: '#974999'
   },
-  blue: {
-    hex: '#2275f9'
+  purple_2: {
+    hex: '#a852aa'
   },
-  pink: {
+  purple_3: {
+    hex: '#b262b4'
+  },
+  purple_4: {
+    hex: '#bc73b8'
+  },
+  purple_5: {
+    hex: '#c78fc9'
+  },
+  purple_6: {
+    hex: '#e1c3e2'
+  },
+  blue_1: {
+    hex: '#223ff9'
+  },
+  blue_2: {
+    hex: '#223ff9'
+  },
+  blue_3: {
+    hex: '#6c80fb'
+  },
+  pink_1: {
+    hex: '#ff55a3'
+  },
+  pink_2: {
     hex: '#f9c0ca'
+  },
+  orange_buff: {
+    hex: '#eeca6b'
   },
   red: {
     hex: 'red'
@@ -50,9 +80,6 @@ var COLORS = {
   },
   dark_tan: {
     hex: '#91895f'
-  },
-  dark_purple: {
-    hex: '#6339a8'
   }
 };
 
@@ -80,28 +107,21 @@ export class PickList extends Component {
         >
           {this.props.title}
         </Text>
-        <View style={{marginBottom: 22}}>
-          <PickerIOS
+        <View style={{padding: 20, marginBottom: 22, backgroundColor: this.state.selectedValue}}>
+          <Picker
+            style={{backgroundColor: 'white'}}
             selectedValue={color}
             onValueChange={this._onValueChange}>
             {Object.keys(COLORS).map((color) => (
-              <PickerItemIOS
+              <Item
                 key={color}
                 value={COLORS[color].hex}
                 label={color}
+                labelStyle={{backgroundColor: 'red'}}
               />
             ))}
-          </PickerIOS>
+          </Picker>
         </View>
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          <View style={[styles.color, {backgroundColor: this.state.selectedValue}]}></View>
-        </View>
-
       </View>
     );
   }
