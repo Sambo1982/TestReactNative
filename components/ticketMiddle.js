@@ -6,7 +6,8 @@ import {
   Image,
   TouchableHighlight,
   Modal,
-  Button
+  Button,
+  Linking
 } from 'react-native';
 
 var styles = StyleSheet.create({
@@ -85,7 +86,7 @@ export default class TicketMiddle extends Component {
           <View style={[styles.qrCodeView]}>
             <TouchableHighlight
               onPress={() => {
-                this.setModalVisible(!this.state.modalVisible)
+                Linking.openURL('com.njtransit')
               }}
             >
               <Image

@@ -92,6 +92,9 @@ var COLORS = {
   light_orange: {
     hex: '#ffcc99'
   },
+  dark_pink: {
+    hex: '#cc0066'
+  },
   pink_1: {
     hex: '#ff55a3'
   },
@@ -118,6 +121,9 @@ var COLORS = {
   },
   green_2: {
     hex: '#33cc99'
+  },
+  dark_lime: {
+    hex: '#66cc66'
   },
   green_3: {
     hex: '#99cc99'

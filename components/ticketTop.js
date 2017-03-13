@@ -33,10 +33,10 @@ var styles = StyleSheet.create({
     fontFamily: 'Helvetica',
     textAlign: 'center',
     padding: 0,
-    fontSize: 42,
-    letterSpacing: 2,
+    fontSize: 45,
+    letterSpacing: 0,
     backgroundColor: 'transparent',
-    fontWeight: '700'
+    fontWeight: '800'
   },
   smallText: {
     fontFamily: 'Helvetica',
@@ -46,7 +46,7 @@ var styles = StyleSheet.create({
     padding: 0,
     fontSize: 16,
     backgroundColor: 'transparent',
-    fontWeight: '700'
+    fontWeight: '800'
   }
 });
 
