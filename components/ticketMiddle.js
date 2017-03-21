@@ -86,7 +86,7 @@ export default class TicketMiddle extends Component {
           <View style={[styles.qrCodeView]}>
             <TouchableHighlight
               onPress={() => {
-                Linking.openURL('com.njtransit')
+                alert('NJTransit Error: 3232. It appears something went wrong')
               }}
             >
               <Image

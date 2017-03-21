@@ -7,8 +7,11 @@ import {
   StyleSheet,
   AsyncStorage,
   TouchableHighlight,
+  Modal,
+  Button,
   ScrollView
 } from "react-native";
+import CustomColor from './customColor';
 
 const Item = Picker.Item;
 
@@ -134,15 +137,20 @@ var COLORS = {
 };
 
 export class PickList extends Component {
-  state = { };
+  state = {
+    modalVisible: false
+  };
 
   _onPressed = async (hexCode) => {
     this.setState({hexCode});
     try {
       await AsyncStorage.setItem(this.props.dbField, hexCode);
-    } catch (error) {
-    }
+    } catch (error) {}
   };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
   render() {
     return (
@@ -165,7 +173,38 @@ export class PickList extends Component {
               </TouchableHighlight>
             </View>
           ))}
+
+          <View style={[styles.colorBox]}>
+            <TouchableHighlight underlayColor='#cccccc' style={[styles.colorButton], {backgroundColor: '#cccccc'}} onPress={() => {
+              this.setModalVisible(!this.state.modalVisible)
+            }}>
+              <Text style={[styles.colorText]}>
+                Custom Color
+              </Text>
+            </TouchableHighlight>
+          </View>
         </View>
+
+          <View>
+            <Modal
+              animationType={"none"}
+              transparent={false}
+              visible={this.state.modalVisible}
+              >
+              <View>
+                <CustomColor dbField={this.props.dbField} />
+              </View>
+              <View style={{marginTop: 22}}>
+                <Button
+                  onPress={() => { this.setModalVisible(!this.state.modalVisible) } }
+                  title="Close"
+                  color="#841584"
+                />
+              </View>
+            </Modal>
+          </View>
+
+
       </View>
     );
   }
